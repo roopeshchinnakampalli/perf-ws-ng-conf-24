@@ -572,7 +572,7 @@ constructor()
 
 #### Register Side Effect
 
-We can also use the `hold` method in order to register our side alerting side effect.
+We can also use the `hold` method in order to register our alerting side effect.
 
 <details>
 

@@ -34,14 +34,16 @@ npm run start
 
 **RxJS**
 
-* [RxJS introduction]()
+* [RxJS introduction - Observables](./exercises/rxjs/rxjs-intro-observable.md)
+* [RxJS introduction - Operators](./exercises/rxjs/rxjs-intro-operators.md)
 * [Higher Order Observables - switchMap: Data Fetching](./exercises/rxjs/data-fetching-switchMap.md)
 * [Higher Order Observables - exhaustMap: Infinite Scroller](./exercises/rxjs/infinite-scroller-exhaustmap.md)
 * [Higher Order Observables - groupBy & mergeMap & exhaustMap: List Updates with loading states](./exercises/rxjs/list-updates-with-mergemap-groupBy.md)
 * [Contextual Template States & Error Handling](./exercises/rxjs/contextual-template-states-error-handling.md)
-* [Side Effects, Multicasting, Derived State & Subscription Handling](./exercises/rxjs/side-effects-derived-state-subscriptions.md)
-* [Reactive State Management](./exercises/rxjs/custom-state-management.md)
-* [Side Effects & Actions](./exercises/rxjs/side-effects-actions.md)
+* [Side Effects & Subscription Handling](./exercises/rxjs/side-effects-subscription-handling.md)
+* [Multicasting, Join Operators & Derived State](./exercises/rxjs/derived-state-multicasting.md)
+* [Reactive State Management](./exercises/rxjs/local-state-with-rx-state.md)
+* [Optional: Side Effects & Actions](./exercises/rxjs/side-effects-actions.md)
 * [Optional: Marble & other rxjs Testing](exercises/rxjs/marble-testing.md)
 * [Optional: Rate Limiting & Scheduling](./exercises/rxjs/rate-limiting.md)
 
