@@ -49,8 +49,15 @@ npm run start
 
 **Performance**
 
+* [Change Detection - OnPush](./exercises/performance/change-detection%20-%20OnPush.md)
+* [Change Detection - signals](./exercises/performance/change-detection%20-%20signals.md)
+* [Change Detection - zoneless](./exercises/performance/change-detection%20-%20zoneless.md)
 * [Signals Introduction](exercises/performance/signal-introduction.md)
 * [Computed](exercises/performance/computed.md)
-* [Effect](exercises/performance/effect.md)
+* [Performance Analysis & Flame Charts](./exercises/performance/performance-tab-flame-charts.md)
+* [JS Event Loop](./exercises/performance/event-loop.md)
+* [Scheduling: chunk work](./exercises/performance/scheduling-chunk-work.md)
+* [Network optimizations](./exercises/performance/network-optimizations.md)
+* [Image Optimizations](./exercises/performance/ng-optimized-images.md)
 
 
