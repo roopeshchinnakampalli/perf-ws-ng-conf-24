@@ -1,4 +1,4 @@
-# RxJS Introduction
+# RxJS Introduction - Operators
 
 In this exercise we will extend our knowledge about rxjs by applying `operators` to our Observables.
 You'll learn how to use operators to create, filter & transform stream of values in different ways.
@@ -88,7 +88,7 @@ constructor(
 
 Congratulations if you have introduced your first rxjs operator 🥳
 
-## Create and transform & Observable from an event
+## Create and transform a stream from an event
 
 After we've used a `filter operator`, it's time to get to know also other categories
 of rxjs operators. This time we'll learn `creation` & `transformation` operators. Furthermore,
