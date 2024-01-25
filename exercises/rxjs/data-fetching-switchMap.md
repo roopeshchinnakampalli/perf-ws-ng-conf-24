@@ -47,16 +47,16 @@ Cool, run your application and repeat the process from before. You should see th
 ## Subscription handling in template
 
 Next, we want to get rid of the manual subscription in our component and instead letting the template handle our subscription automatically.
-Create a `movie$` Observable. It should just be the stream of movies without the subscription.
+Create a `movies$` Observable. It should just be the stream of movies without the subscription.
 
 <details>
-  <summary>MovieListPageComponent movie$</summary>
+  <summary>MovieListPageComponent movies$</summary>
 
 ```ts
 
 // movie-list-page.component.ts
 
-movie$ = this.activatedRoute.params.pipe(
+movies$ = this.activatedRoute.params.pipe(
      switchMap(params => {
        if (params['category']) {
          return this.movieService.getMovieList(params['category']);
@@ -70,10 +70,10 @@ movie$ = this.activatedRoute.params.pipe(
 
 </details>
 
-Now refactor your template to consume the newly created Observable. You can use the ngIf-async-hack: `*ngIf="movie$ | async as movies`.
+Now refactor your template to consume the newly created Observable. You can use the ngIf-async-hack: `*ngIf="movies$ | async as movies`.
 
 <details>
-  <summary>MovieListPageComponent movie$ | async</summary>
+  <summary>MovieListPageComponent movies$ | async</summary>
 
 ```html
 
@@ -138,7 +138,7 @@ Please use either `concat` or `startWith` in order to first emit an undefined va
 
 // movie-list-page.component.ts
 
-movie$ = this.activatedRoute.params.pipe(
+movies$ = this.activatedRoute.params.pipe(
      switchMap(params => {
        if (params['category']) {
          return this.movieService.getMovieList(params['category']).pipe(
