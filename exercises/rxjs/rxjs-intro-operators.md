@@ -170,7 +170,7 @@ constructor(
   });
 
   fromEvent<MouseEvent>(this.elementRef.nativeElement, 'mouseleave').subscribe(() => {
-    this.rotation = 'rotation(0deg)'
+    this.rotation = 'rotate(0deg)'
   });
 }
 
@@ -220,7 +220,7 @@ constructor(
 
   fromEvent<MouseEvent>(this.elementRef.nativeElement, 'mouseleave')
     .pipe(
-      map(() => 'rotation(0deg)')
+      map(() => 'rotate(0deg)')
     )
     .subscribe(rotation => {
     this.rotation = rotation;
@@ -270,7 +270,7 @@ constructor(
 
   const reset$ = fromEvent<MouseEvent>(this.elementRef.nativeElement, 'mouseleave')
     .pipe(
-      map(() => 'rotation(0deg)')
+      map(() => 'rotate(0deg)')
     );
 }
 
@@ -304,7 +304,7 @@ constructor(
 
   const reset$ = fromEvent<MouseEvent>(this.elementRef.nativeElement, 'mouseleave')
     .pipe(
-      map(() => 'rotation(0deg)')
+      map(() => 'rotate(0deg)')
     );
   
   merge(rotate$, reset$)
