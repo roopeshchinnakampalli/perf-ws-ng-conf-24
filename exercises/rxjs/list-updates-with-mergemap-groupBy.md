@@ -72,7 +72,7 @@ run in parallel.
 
 // movie-list-page.component.ts
 
-readonly favoritesMap$ = new BehaviorSubject<Record<string, MovieModel>>({});
+readonly toggleFavorite$ = new Subject<MovieModel>();
 
 
 this.toggleFavorite$.pipe(
