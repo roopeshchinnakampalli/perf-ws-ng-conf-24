@@ -53,3 +53,7 @@ export class TiltDirective {
 
 Great! Please take a look at your application and be amazed by the change detection counters.
 🔥🔥🔥🔥
+
+## Check out Matthieu Rieglers Demo !!!
+
+https://jeanmeche.github.io/angular-change-detection/
