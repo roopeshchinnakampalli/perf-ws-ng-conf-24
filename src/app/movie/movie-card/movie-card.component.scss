@@ -64,7 +64,16 @@
     transform .15s cubic-bezier(.4,0,.2,1) 0s;
 
   .movie-weight {
+    height: 0;
     color: blue;
+    opacity: .5;
+    border: 0 solid;
+    line-height: 0;
+    text-decoration: underline;
+    white-space: break-spaces;
+    * {
+      display: block;
+    }
   }
 }
 

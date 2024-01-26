@@ -7,10 +7,10 @@ import { StarRatingComponent } from '../../ui/pattern/star-rating/star-rating.co
 import { TiltDirective } from '../../tilt/tilt.directive';
 
 @Component({
-    selector: 'movie-card',
-    templateUrl: './movie-card.component.html',
-    styleUrls: ['./movie-card.component.scss'],
-    standalone: true,
+  selector: 'movie-card',
+  templateUrl: './movie-card.component.html',
+  styleUrls: ['./movie-card.component.scss'],
+  standalone: true,
   imports: [
     TiltDirective,
     StarRatingComponent,
@@ -22,7 +22,6 @@ import { TiltDirective } from '../../tilt/tilt.directive';
   ],
 })
 export class MovieCardComponent implements OnInit {
-
   @Input() movie!: MovieModel;
 
   @Input() loading = false;
@@ -34,7 +33,7 @@ export class MovieCardComponent implements OnInit {
   ngOnInit() {
     if (!this.movie) {
       throw new Error(
-        `MovieCardComponent expects movie to be set, ${this.movie} given`
+        `MovieCardComponent expects movie to be set, ${this.movie} given`,
       );
     }
   }
@@ -43,5 +42,5 @@ export class MovieCardComponent implements OnInit {
     this.selected.emit(this.movie);
   }
 
-  divs = new Array(100).fill(null).map((v, i) => i);
+  divs = new Array(150).fill(null).map((v, i) => i);
 }
