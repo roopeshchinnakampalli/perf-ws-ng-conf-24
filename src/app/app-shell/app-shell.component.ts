@@ -1,5 +1,4 @@
 import {
-  NavigationEnd,
   Router,
   RouterLinkActive,
   RouterLink,
@@ -33,6 +32,8 @@ import { SideDrawerComponent } from '../ui/component/side-drawer/side-drawer.com
 })
 export class AppShellComponent {
   sideDrawerOpen = false;
+
+  genres$ = this.movieService.getGenres();
 
   private _searchValue = '';
   set searchValue(value: string) {

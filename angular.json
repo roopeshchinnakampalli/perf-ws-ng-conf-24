@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ws-bizzdesign": {
+    "ws-perf-ng-conf": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ws-bizzdesign",
+            "outputPath": "dist/ws-perf-ng-conf-24",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ws-bizzdesign:build:production"
+              "buildTarget": "ws-perf-ng-conf:build:production"
             },
             "development": {
-              "buildTarget": "ws-bizzdesign:build:development"
+              "buildTarget": "ws-perf-ng-conf:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "ws-bizzdesign:build"
+            "buildTarget": "ws-perf-ng-conf:build"
           }
         },
         "test": {
