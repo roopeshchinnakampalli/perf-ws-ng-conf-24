@@ -1,6 +1,3 @@
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { RxState } from '@rx-angular/state';
-import { select } from '@rx-angular/state/selections';
 import { DOCUMENT } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -13,6 +10,13 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FastSvgComponent } from '@push-based/ngx-fast-svg';
+import { coerceObservable } from '@rx-angular/cdk/coercing';
+import { RxState } from '@rx-angular/state';
+import { RxActionFactory } from '@rx-angular/state/actions';
+import { select } from '@rx-angular/state/selections';
+import { RxLet } from '@rx-angular/template/let';
 import {
   filter,
   fromEvent,
@@ -24,10 +28,6 @@ import {
   take,
   withLatestFrom,
 } from 'rxjs';
-import { RxActionFactory } from '@rx-angular/state/actions';
-import { coerceObservable } from '@rx-angular/cdk/coercing';
-import { RxLet } from '@rx-angular/template/let';
-import { FastSvgComponent } from '@push-based/ngx-fast-svg';
 
 type UiActions = {
   searchChange: string;
@@ -37,19 +37,17 @@ type UiActions = {
 };
 
 @Component({
-    selector: 'ui-search-bar',
-    template: `
+  selector: 'ui-search-bar',
+  template: `
     <form
       (submit)="ui.formSubmit($event)"
       #form
       class="form"
-      (click)="ui.formClick($event)"
-    >
+      (click)="ui.formClick($event)">
       <button
         type="submit"
         class="magnifier-button"
-        aria-label="Search for a movie"
-      >
+        aria-label="Search for a movie">
         <fast-svg name="search" size="1.125em"></fast-svg>
       </button>
       <input
@@ -59,24 +57,23 @@ type UiActions = {
         [value]="search"
         (change)="ui.searchChange(searchInput.value)"
         placeholder="Search for a movie..."
-        class="input"
-      />
+        class="input" />
     </form>
   `,
-    styleUrls: ['search-bar.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.Emulated,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            multi: true,
-            useExisting: SearchBarComponent,
-        },
-        RxState,
-        RxActionFactory,
-    ],
-    standalone: true,
-    imports: [FastSvgComponent, RxLet],
+  styleUrls: ['search-bar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.Emulated,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: SearchBarComponent,
+    },
+    RxState,
+    RxActionFactory,
+  ],
+  standalone: true,
+  imports: [FastSvgComponent, RxLet],
 })
 export class SearchBarComponent implements OnInit, ControlValueAccessor {
   @ViewChild('searchInput') inputRef!: ElementRef<HTMLInputElement>;
@@ -113,7 +110,7 @@ export class SearchBarComponent implements OnInit, ControlValueAccessor {
     return fromEvent(this.document, 'click').pipe(
       // forward if the form did NOT triggered the click
       // means we clicked somewhere else in the page but the form
-      filter((e) => !this.formRef.nativeElement.contains(e.target as any))
+      filter(e => !this.formRef.nativeElement.contains(e.target as any))
     );
   }
 
@@ -154,7 +151,7 @@ export class SearchBarComponent implements OnInit, ControlValueAccessor {
       () => false
     );
     this.state.connect('open', this.closedFormClick$, () => true);
-    this.state.hold(this.state.$.pipe(select('search')), (search) => {
+    this.state.hold(this.state.$.pipe(select('search')), search => {
       this.onChange(search);
     });
     /*this.state.hold(this.ui.formSubmit$, () => {

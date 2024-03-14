@@ -2,11 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { insert, remove } from '@rx-angular/cdk/transformations';
 import { map, Observable, tap, timer } from 'rxjs';
+
 import { environment } from '../../environments/environment';
+import { TMDBMovieModel } from '../shared/model/movie.model';
 import { TMDBMovieCreditsModel } from '../shared/model/movie-credits.model';
 import { TMDBMovieDetailsModel } from '../shared/model/movie-details.model';
 import { TMDBMovieGenreModel } from '../shared/model/movie-genre.model';
-import { TMDBMovieModel } from '../shared/model/movie.model';
 import { MovieModel } from './movie-model';
 
 @Injectable({
@@ -17,9 +18,9 @@ export class MovieService {
 
   getGenres(): Observable<TMDBMovieGenreModel[]> {
     return this.httpClient
-      .get<{ genres: TMDBMovieGenreModel[] }>(
-        `${environment.tmdbBaseUrl}/3/genre/movie/list`
-      )
+      .get<{
+        genres: TMDBMovieGenreModel[];
+      }>(`${environment.tmdbBaseUrl}/3/genre/movie/list`)
       .pipe(map(({ genres }) => genres));
   }
 
@@ -93,41 +94,42 @@ export class MovieService {
   }
 
   getFavoriteMovies(): Observable<MovieModel[]> {
-    console.log('requesting getFavoriteMovies')
+    console.log('requesting getFavoriteMovies');
     return timer(1500).pipe(
       map(() => this.getFavorites()),
       tap(() => console.log('requested getFavoriteMovies'))
-    )
+    );
   }
 
   toggleFavorite(movie: MovieModel): Observable<boolean> {
-    console.log('requesting toggleFavorite')
+    console.log('requesting toggleFavorite');
     return timer(1500).pipe(
       map(() => {
-        console.log('requested toggleFavorite')
+        console.log('requested toggleFavorite');
         if (this.getFavorites().find(f => f.id === movie.id)) {
-          this.setFavorites(
-            remove(this.getFavorites(), movie, 'id')
-          );
+          this.setFavorites(remove(this.getFavorites(), movie, 'id'));
           return false;
         } else {
           this.setFavorites(
-            insert(this.getFavorites(), movie as MovieModel & { comment: string })
+            insert(
+              this.getFavorites(),
+              movie as MovieModel & { comment: string }
+            )
           );
           return true;
         }
       })
-    )
+    );
   }
 
   getFavorites(): (MovieModel & { comment: string })[] {
-    if (typeof localStorage === "undefined") return [];
+    if (typeof localStorage === 'undefined') return [];
     const movies = localStorage.getItem('my-movies');
     return movies ? JSON.parse(movies) : [];
   }
 
   setFavorites(movies: (MovieModel & { comment: string })[]) {
-    if (typeof localStorage === "undefined") return;
+    if (typeof localStorage === 'undefined') return;
     localStorage.setItem('my-movies', JSON.stringify(movies));
   }
 }

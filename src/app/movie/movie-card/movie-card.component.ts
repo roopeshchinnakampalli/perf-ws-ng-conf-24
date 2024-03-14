@@ -1,10 +1,11 @@
+import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FastSvgComponent } from '@push-based/ngx-fast-svg';
-import { MovieModel } from '../movie-model';
-import { MovieImagePipe } from '../movie-image.pipe';
-import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
-import { StarRatingComponent } from '../../ui/pattern/star-rating/star-rating.component';
+
 import { TiltDirective } from '../../tilt/tilt.directive';
+import { StarRatingComponent } from '../../ui/pattern/star-rating/star-rating.component';
+import { MovieImagePipe } from '../movie-image.pipe';
+import { MovieModel } from '../movie-model';
 
 @Component({
   selector: 'movie-card',
@@ -33,7 +34,7 @@ export class MovieCardComponent implements OnInit {
   ngOnInit() {
     if (!this.movie) {
       throw new Error(
-        `MovieCardComponent expects movie to be set, ${this.movie} given`,
+        `MovieCardComponent expects movie to be set, ${this.movie} given`
       );
     }
   }

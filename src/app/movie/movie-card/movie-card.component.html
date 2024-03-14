@@ -1,17 +1,20 @@
-<div class="movie-card"
-     [tilt]="30"
-     (click)="movieClicked()">
-
-  <div class="favorite-area" (click)="$event.preventDefault(); $event.stopPropagation();">
+<div class="movie-card" [tilt]="30" (click)="movieClicked()">
+  <div
+    class="favorite-area"
+    (click)="$event.preventDefault(); $event.stopPropagation()">
     <fast-svg *ngIf="loading" class="loading" name="genre" />
-    <button class="favorite-indicator" [class.is-favorite]="favorite" *ngIf="!loading"
-            (click)="toggleFavorite.emit(movie)">
+    <button
+      class="favorite-indicator"
+      [class.is-favorite]="favorite"
+      *ngIf="!loading"
+      (click)="toggleFavorite.emit(movie)">
       <fast-svg name="popular" />
     </button>
   </div>
-  <img class="movie-image"
-       [alt]="movie.title"
-       [src]="movie.poster_path | movieImage">
+  <img
+    class="movie-image"
+    [alt]="movie.title"
+    [src]="movie.poster_path | movieImage" />
 
   <div class="movie-card-content">
     <div class="movie-card-title">

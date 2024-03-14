@@ -24,7 +24,7 @@ export class ElementVisibilityDirective {
   constructor(
     private actionsF: RxActionFactory<Actions>,
     private elementRef: ElementRef<HTMLElement>,
-    @Inject(PLATFORM_ID) platformId: Object
+    @Inject(PLATFORM_ID) platformId: object
   ) {
     if (isPlatformBrowser(platformId)) {
       fromEvent(document, 'scroll')

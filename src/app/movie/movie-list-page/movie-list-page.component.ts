@@ -1,12 +1,13 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { rxActions } from '@rx-angular/state/actions';
 import { exhaustMap, map, Observable, startWith, tap } from 'rxjs';
+
+import { ElementVisibilityDirective } from '../../shared/cdk/element-visibility/element-visibility.directive';
 import { TMDBMovieModel } from '../../shared/model/movie.model';
 import { MovieService } from '../movie.service';
-import { ElementVisibilityDirective } from '../../shared/cdk/element-visibility/element-visibility.directive';
 import { MovieListComponent } from '../movie-list/movie-list.component';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'movie-list-page',
@@ -22,15 +23,19 @@ export class MovieListPageComponent {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private movieService: MovieService,
+    private movieService: MovieService
   ) {
     this.activatedRoute.params.subscribe(params => {
       if (params['category']) {
-        this.paginate(page => this.movieService.getMovieList(params['category'], page)).subscribe(movies => {
+        this.paginate(page =>
+          this.movieService.getMovieList(params['category'], page)
+        ).subscribe(movies => {
           this.movies = movies;
         });
       } else {
-        this.paginate(page => this.movieService.getMoviesByGenre(params['id'], page)).subscribe(movies => {
+        this.paginate(page =>
+          this.movieService.getMoviesByGenre(params['id'], page)
+        ).subscribe(movies => {
           this.movies = movies;
         });
       }
@@ -47,11 +52,9 @@ export class MovieListPageComponent {
       exhaustMap((v, i) =>
         // call requestFn with the page parameter, use the index from `exhaustMap`
         // as the index is not 0 based
-        requestFn(i + 1).pipe(
-          map((movies) => [...allMovies, ...movies])
-        )
+        requestFn(i + 1).pipe(map(movies => [...allMovies, ...movies]))
       ),
-      tap(movies => allMovies = movies)
+      tap(movies => (allMovies = movies))
     );
   }
 }

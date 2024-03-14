@@ -1,26 +1,29 @@
+import { DOCUMENT, NgFor } from '@angular/common';
 import {
   Component,
-  ElementRef, EventEmitter,
+  ElementRef,
+  EventEmitter,
   Inject,
-  Input, Output,
+  Input,
+  Output,
   ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { MovieModel } from '../movie-model';
-import { DOCUMENT, NgFor } from '@angular/common';
+
 import { MovieCardComponent } from '../movie-card/movie-card.component';
+import { MovieModel } from '../movie-model';
 
 @Component({
-    selector: 'movie-list',
-    templateUrl: './movie-list.component.html',
-    styleUrls: ['./movie-list.component.scss'],
-    standalone: true,
-    imports: [NgFor, MovieCardComponent],
+  selector: 'movie-list',
+  templateUrl: './movie-list.component.html',
+  styleUrls: ['./movie-list.component.scss'],
+  standalone: true,
+  imports: [NgFor, MovieCardComponent],
 })
 export class MovieListComponent {
   @Input({ required: true }) movies!: MovieModel[];
 
-  @Input() moviesLoading: Record<string, boolean>  | null = null;
+  @Input() moviesLoading: Record<string, boolean> | null = null;
   @Input() favorites: Record<string, MovieModel> | null = null;
 
   @Output() favoriteToggled = new EventEmitter<MovieModel>();

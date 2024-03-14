@@ -17,7 +17,7 @@ export function optimizedFetch<T, K, O>(
     o$.pipe(
       groupBy(groupSelector),
       // exhaust by keySelector e.g. url
-      map((t$) => t$.pipe(exhaustMap(fetch))),
+      map(t$ => t$.pipe(exhaustMap(fetch))),
       mergeAll()
     );
 }

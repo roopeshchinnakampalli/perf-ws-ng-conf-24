@@ -1,11 +1,12 @@
 <div class="movie-detail-wrapper">
-  <ui-detail-grid *ngIf="(movie$ | async) as movie; else: loader">
+  <ui-detail-grid *ngIf="movie$ | async as movie; else loader">
     <div detailGridMedia>
-      <img class="aspectRatio-2-3 fit-cover"
-           [src]="movie.poster_path | movieImage: 780"
-           [alt]="movie.title"
-           width="780px"
-           height="1170px">
+      <img
+        class="aspectRatio-2-3 fit-cover"
+        [src]="movie.poster_path | movieImage: 780"
+        [alt]="movie.title"
+        width="780px"
+        height="1170px" />
     </div>
     <div detailGridDescription>
       <header>
@@ -15,12 +16,15 @@
       <section class="movie-detail--basic-infos">
         <ui-star-rating
           [rating]="movie.vote_average"
-          [showRating]="true"
-        ></ui-star-rating>
+          [showRating]="true"></ui-star-rating>
         <div class="movie-detail--languages-runtime-release">
           <strong>
-            {{ movie.spoken_languages[0] ? movie.spoken_languages[0].english_name : '' }} /
-            {{ movie.runtime }} min /
+            {{
+              movie.spoken_languages[0]
+                ? movie.spoken_languages[0].english_name
+                : ''
+            }}
+            / {{ movie.runtime }} min /
             {{ movie.release_date | date: 'Y' }}
           </strong>
         </div>
@@ -29,8 +33,9 @@
         <h3>The Genres</h3>
         <div class="movie-detail--genres">
           <!-- class="movie-detail--genres-link" genre links -->
-          <a class="movie-detail--genres-link"
-               *ngFor="let genre of movie.genres">
+          <a
+            class="movie-detail--genres-link"
+            *ngFor="let genre of movie.genres">
             <fast-svg name="genre"></fast-svg>
             {{ genre.name }}
           </a>
@@ -43,10 +48,10 @@
       <section>
         <h3>The Cast</h3>
         <div class="movie-detail--cast-list">
-          <div class="cast-list"
-               *ngIf="(credits$ | async) as credits">
-            <div class="movie-detail--cast-actor"
-                 *ngFor="let actor of credits.cast">
+          <div class="cast-list" *ngIf="credits$ | async as credits">
+            <div
+              class="movie-detail--cast-actor"
+              *ngFor="let actor of credits.cast">
               <img
                 loading="lazy"
                 [src]="
@@ -55,8 +60,7 @@
                     : 'assets/images/no_poster_available.jpg'
                 "
                 [alt]="actor.name"
-                [title]="actor.name"
-              />
+                [title]="actor.name" />
             </div>
             <!-- class="movie-detail--cast-actor" -->
             <!-- <img
@@ -75,36 +79,29 @@
       </section>
       <section class="movie-detail--ad-section-links">
         <!-- homepage -->
-        <a
-          class="btn"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a class="btn" target="_blank" rel="noopener noreferrer">
           Website
           <fast-svg class="btn__icon" name="website"></fast-svg>
-
         </a>
         <!-- (ngIf) ? imdb_id -->
         <a
           class="btn"
           target="_blank"
           rel="noopener noreferrer"
-          [href]="'https://www.imdb.com/title/'"
-        >
+          [href]="'https://www.imdb.com/title/'">
           IMDB
           <fast-svg class="btn__icon" name="imdb"></fast-svg>
         </a>
         <!-- (ngIf) ? imdb_id -->
-        <a
-          class="btn"
-        >
+        <a class="btn">
           Trailer
           <fast-svg class="btn__icon" name="play"></fast-svg>
         </a>
         <!-- TODO: create dialog with iframe embed -->
         <!-- back function -->
         <button class="btn primary-button">
-          <fast-svg class="btn__icon" name="back" size="1em"></fast-svg>&nbsp;Back
+          <fast-svg class="btn__icon" name="back" size="1em"></fast-svg
+          >&nbsp;Back
         </button>
       </section>
     </div>
@@ -115,21 +112,19 @@
     <h1>Recommended</h1>
     <h2>Movies</h2>
   </header>
-  <ng-container *ngIf="(recommendations$ | async) as recommendations; else: loader">
-
+  <ng-container
+    *ngIf="recommendations$ | async as recommendations; else loader">
     <movie-list
       [movies]="recommendations.results"
-      *ngIf="recommendations.results.length > 0; else: noResult">
+      *ngIf="recommendations.results.length > 0; else noResult">
     </movie-list>
 
     <ng-template #noResult>
       <div>No recommended movies</div>
     </ng-template>
-
   </ng-container>
 
   <ng-template #loader>
     <div class="loader"></div>
   </ng-template>
-
 </div>

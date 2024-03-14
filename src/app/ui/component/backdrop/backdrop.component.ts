@@ -1,12 +1,18 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  Input,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
-    selector: 'ui-backdrop',
-    template: ``,
-    styleUrls: ['./backdrop.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.Emulated,
-    standalone: true
+  selector: 'ui-backdrop',
+  template: ``,
+  styleUrls: ['./backdrop.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.Emulated,
+  standalone: true,
 })
 export class BackdropComponent {
   @HostBinding('class.opened')

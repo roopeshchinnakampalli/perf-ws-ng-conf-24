@@ -1,6 +1,10 @@
 import { VideoTag } from './video.interface';
 
-export function addVideoTag<T extends Object>(_res: T, options: { pathPropFn: (o: T) => string, baseUrl?: string }): T & VideoTag {
+export function addVideoTag<T extends object>(
+  _res: T,
+  options: { pathPropFn: (o: T) => string; baseUrl?: string }
+): T & VideoTag {
+  // eslint-disable-next-line prefer-const
   let { pathPropFn, baseUrl } = options;
   baseUrl = baseUrl || 'https://www.youtube.com/embed';
 

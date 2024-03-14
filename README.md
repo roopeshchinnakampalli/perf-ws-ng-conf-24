@@ -4,8 +4,8 @@
 
 **System Requirements**
 
-* `node 18`
-* `npm 8`
+* `node ^18.13.0 || ^20.9.0`
+* `npm > 8`
 
 **Clone and install**
 

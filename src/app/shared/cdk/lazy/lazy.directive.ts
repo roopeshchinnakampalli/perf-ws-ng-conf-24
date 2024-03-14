@@ -1,8 +1,9 @@
-import { RxState } from '@rx-angular/state';
 import { Directive, Input, Type, ViewContainerRef } from '@angular/core';
+import { RxState } from '@rx-angular/state';
+import { distinctUntilChanged } from 'rxjs';
+
 import { RxInputType } from '../../rxa-custom/input-type.typing';
 import { coerceObservable } from '../../utils/coerceObservable';
-import { distinctUntilChanged } from 'rxjs';
 
 /**
  * @example
@@ -42,7 +43,7 @@ export class LazyDirective extends RxState<{
     this.hold(
       // avoid recreation of a component with the same class (distinctUntilChanged)
       this.select('component').pipe(distinctUntilChanged()),
-      (c) => {
+      c => {
         vCR.clear();
         vCR.createComponent(c);
       }

@@ -1,3 +1,4 @@
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -5,16 +6,16 @@ import {
   TrackByFunction,
   ViewEncapsulation,
 } from '@angular/core';
+
 import { trackByIndex } from '../../../shared/utils/track-by';
-import { NgFor, NgClass, NgIf } from '@angular/common';
 
 const range = 10;
 const numStars = 5;
 const starsArray: number[] = new Array(numStars).fill(1);
 
 @Component({
-    selector: 'ui-star-rating',
-    template: `
+  selector: 'ui-star-rating',
+  template: `
     <span class="tooltip">
       {{ tooltipText }}
     </span>
@@ -31,18 +32,14 @@ const starsArray: number[] = new Array(numStars).fill(1);
     </div>
     <div class="rating-value" *ngIf="showRating">{{ rating }}</div>
   `,
-    styleUrls: [
-        'star-rating.component.scss',
-        '../../component/tooltip/_tooltip.scss',
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.Emulated,
-    standalone: true,
-    imports: [
-        NgFor,
-        NgClass,
-        NgIf,
-    ],
+  styleUrls: [
+    'star-rating.component.scss',
+    '../../component/tooltip/_tooltip.scss',
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.Emulated,
+  standalone: true,
+  imports: [NgFor, NgClass, NgIf],
 })
 export class StarRatingComponent {
   range = range;

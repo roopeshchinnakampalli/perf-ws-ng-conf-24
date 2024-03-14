@@ -15,7 +15,7 @@ export function observeElementVisibility(
   }
 ): Observable<boolean> {
   const { stop$, ..._cgf } = cfg || {};
-  return new Observable<boolean>((subscriber) => {
+  return new Observable<boolean>(subscriber => {
     const observer = new IntersectionObserver(
       (entries: IntersectionObserverEntry[]) => {
         subscriber.next(entries[0].isIntersecting);
@@ -32,6 +32,6 @@ export function observeElementVisibility(
   }).pipe(
     // only forward changes in visibility
     distinctUntilChanged(),
-    isObservable(stop$) ? takeUntil(stop$) : (o) => o
+    isObservable(stop$) ? takeUntil(stop$) : o => o
   );
 }

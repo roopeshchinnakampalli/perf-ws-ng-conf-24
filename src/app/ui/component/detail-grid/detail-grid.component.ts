@@ -1,8 +1,12 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
-    selector: 'ui-detail-grid',
-    template: `
+  selector: 'ui-detail-grid',
+  template: `
     <div class="grid--item gradient">
       <ng-content select="[detailGridMedia]"></ng-content>
     </div>
@@ -10,11 +14,9 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/
       <ng-content select="[detailGridDescription]"></ng-content>
     </div>
   `,
-    styleUrls: ['./detail-grid.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.Emulated,
-    standalone: true
+  styleUrls: ['./detail-grid.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.Emulated,
+  standalone: true,
 })
-export class DetailGridComponent {
-
-}
+export class DetailGridComponent {}

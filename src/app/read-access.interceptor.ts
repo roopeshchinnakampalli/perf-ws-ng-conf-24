@@ -1,5 +1,6 @@
-import {HttpHeaders, HttpInterceptorFn,} from '@angular/common/http';
-import {environment} from '../environments/environment';
+import { HttpHeaders, HttpInterceptorFn } from '@angular/common/http';
+
+import { environment } from '../environments/environment';
 
 export const readAccessInterceptor: HttpInterceptorFn = (req, next) => {
   const key = environment.tmdbApiReadAccessKey;
@@ -13,4 +14,3 @@ export const readAccessInterceptor: HttpInterceptorFn = (req, next) => {
     })
   );
 };
-

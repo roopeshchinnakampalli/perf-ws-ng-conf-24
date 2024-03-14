@@ -1,7 +1,6 @@
 <ui-side-drawer
   [opened]="sideDrawerOpen"
-  (openedChange)="sideDrawerOpen = $event"
->
+  (openedChange)="sideDrawerOpen = $event">
   <a class="navigation-header" href="/">
     <picture srcset="/assets/images/logo.svg" media="(min-width: 80em)">
       <img
@@ -10,19 +9,16 @@
         title="HubMovies"
         alt="HubMovies"
         width="150"
-        height="150"
-      />
+        height="150" />
     </picture>
   </a>
   <nav class="navigation">
-
     <h3 class="navigation--headline">User Menu</h3>
 
     <a
       class="navigation--link"
       [routerLink]="['/my-movies']"
-      routerLinkActive="active"
-    >
+      routerLinkActive="active">
       <div class="navigation--menu-item">
         <fast-svg class="navigation--menu-item-icon" name="account"></fast-svg>
         My Movies
@@ -34,8 +30,7 @@
     <a
       class="navigation--link"
       [routerLink]="['/list', 'popular']"
-      routerLinkActive="active"
-    >
+      routerLinkActive="active">
       <div class="navigation--menu-item">
         <fast-svg class="navigation--menu-item-icon" name="popular"></fast-svg>
         Popular
@@ -45,10 +40,11 @@
     <a
       class="navigation--link"
       [routerLink]="['/list', 'top_rated']"
-      routerLinkActive="active"
-    >
+      routerLinkActive="active">
       <div class="navigation--menu-item">
-        <fast-svg class="navigation--menu-item-icon" name="top_rated"></fast-svg>
+        <fast-svg
+          class="navigation--menu-item-icon"
+          name="top_rated"></fast-svg>
         Top Rated
       </div>
     </a>
@@ -56,8 +52,7 @@
     <a
       class="navigation--link"
       [routerLink]="['/list', 'upcoming']"
-      routerLinkActive="active"
-    >
+      routerLinkActive="active">
       <div class="navigation--menu-item">
         <fast-svg class="navigation--menu-item-icon" name="upcoming"></fast-svg>
         Upcoming
@@ -69,8 +64,7 @@
       <a
         class="navigation--link"
         [routerLink]="['/list', 'genre', genre.id]"
-        routerLinkActive="active"
-      >
+        routerLinkActive="active">
         <div class="navigation--menu-item">
           <fast-svg class="navigation--menu-item-icon" name="genre" />
           {{ genre.name }}
@@ -82,17 +76,14 @@
     <a
       href="https://www.themoviedb.org/"
       target="_blank"
-      rel="noreferrer noopener"
-    >
+      rel="noreferrer noopener">
       <picture class="tmdb-mark">
         <source
           srcset="/assets/images/tmdbgreen.svg"
-          media="(prefers-color-scheme: dark)"
-        />
+          media="(prefers-color-scheme: dark)" />
         <source
           srcset="/assets/images/tmdb.svg"
-          media="(prefers-color-scheme: light)"
-        />
+          media="(prefers-color-scheme: light)" />
         <img width="300" height="118" alt="The Movie Database" src="" />
       </picture>
     </a>
@@ -103,13 +94,10 @@
     <ui-hamburger-button
       data-uf="menu-btn"
       class="ui-toolbar--action"
-      (click)="sideDrawerOpen = !sideDrawerOpen"
-    >
+      (click)="sideDrawerOpen = !sideDrawerOpen">
     </ui-hamburger-button>
     <div class="ui-toolbar--widget-container">
-      <ui-search-bar
-        [(ngModel)]="searchValue"
-      ></ui-search-bar>
+      <ui-search-bar [(ngModel)]="searchValue"></ui-search-bar>
       <ui-dark-mode-toggle></ui-dark-mode-toggle>
       <fast-svg name="account"></fast-svg>
       <!--<button (click)="toggleAuth()">

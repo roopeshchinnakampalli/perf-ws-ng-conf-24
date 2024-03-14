@@ -1,16 +1,13 @@
-import {
-  Router,
-  RouterLinkActive,
-  RouterLink,
-} from '@angular/router';
+import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { FastSvgComponent } from '@push-based/ngx-fast-svg';
+
 import { MovieService } from '../movie/movie.service';
 import { DarkModeToggleComponent } from '../ui/component/dark-mode-toggle/dark-mode-toggle.component';
-import { FormsModule } from '@angular/forms';
-import { SearchBarComponent } from '../ui/component/search-bar/search-bar.component';
 import { HamburgerButtonComponent } from '../ui/component/hamburger-button/hamburger-button.component';
-import { AsyncPipe } from '@angular/common';
-import { FastSvgComponent } from '@push-based/ngx-fast-svg';
+import { SearchBarComponent } from '../ui/component/search-bar/search-bar.component';
 import { SideDrawerComponent } from '../ui/component/side-drawer/side-drawer.component';
 
 @Component({
@@ -46,6 +43,6 @@ export class AppShellComponent {
 
   constructor(
     private movieService: MovieService,
-    private router: Router,
+    private router: Router
   ) {}
 }
